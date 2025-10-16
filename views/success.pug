@@ -1,0 +1,44 @@
+// views/success.pug
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Application Submitted - Clarke International University
+    link(rel="stylesheet" href="/styles.css")
+
+  body
+    .success-container
+      .success-icon ✓
+
+      .success-message
+        h1 APPLICATION SUBMITTED SUCCESSFULLY
+
+        p Your application has been received and is being processed.
+
+        .success-data
+          p
+            strong Name:
+            = ` ${data.firstName} ${data.lastName}`
+          p
+            strong Course:
+            = ` ${data.course}`
+          p
+            strong Entry Scheme:
+            = ` ${data.entryScheme}`
+          p
+            strong Intake:
+            = ` ${data.intake}`
+          p
+            strong Sponsorship:
+            = ` ${data.sponsorship}`
+          p
+            strong Gender:
+            = ` ${data.gender}`
+          p
+            strong Residence:
+            = ` ${data.residence}`
+
+        p We will contact you soon with further updates.
+
+      a(href="/" class="back-btn") SUBMIT ANOTHER APPLICATION

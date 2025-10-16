@@ -1,0 +1,182 @@
+// views/application.pug
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Clarke International University - Student Application
+    link(rel="stylesheet" href="/styles.css")
+    script(src="/validation.js" defer)
+
+  body
+    .container
+      .left-section
+        .logo-box
+          img(src="/logo.png" alt="Clarke International University Logo" class="logo")
+
+      .right-section
+        h1.form-title STUDENT APPLICATION FORM
+
+        form(method="POST" action="/submit-application" id="applicationForm" novalidate)
+
+          .form-row
+            .form-group
+              label(for="firstName" class="label")
+                span.required *
+                span First Name
+              input(
+                type="text"
+                id="firstName"
+                name="firstName"
+                class=`form-input ${errors && errors.firstName ? 'error-input' : ''}`
+                value=data.firstName || ''
+                placeholder="Enter first name"
+              )
+              if errors && errors.firstName
+                .error-message= errors.firstName
+
+            .form-group
+              label(for="lastName" class="label")
+                span.required *
+                span Last Name
+              input(
+                type="text"
+                id="lastName"
+                name="lastName"
+                class=`form-input ${errors && errors.lastName ? 'error-input' : ''}`
+                value=data.lastName || ''
+                placeholder="Enter last name"
+              )
+              if errors && errors.lastName
+                .error-message= errors.lastName
+
+          .form-row
+            .form-group
+              label(for="course" class="label")
+                span.required *
+                span Course
+              select(
+                id="course"
+                name="course"
+                class=`form-input ${errors && errors.course ? 'error-input' : ''}`
+              )
+                option -- Select --
+                option Engineering
+                option Business Administration
+                option Computer Science
+                option Nursing
+                option Education
+                option Law
+              if errors && errors.course
+                .error-message= errors.course
+
+            .form-group
+              label(for="entryScheme" class="label")
+                span.required *
+                span Entry Scheme
+              select(
+                id="entryScheme"
+                name="entryScheme"
+                class=`form-input ${errors && errors.entryScheme ? 'error-input' : ''}`
+              )
+                option -- Select --
+                option Direct Entry
+                option UTME
+                option DE (National Diploma)
+                option JAMB
+              if errors && errors.entryScheme
+                .error-message= errors.entryScheme
+
+          .form-row
+            .form-group
+              label(for="intake" class="label")
+                span.required *
+                span Intake
+              select(
+                id="intake"
+                name="intake"
+                class=`form-input ${errors && errors.intake ? 'error-input' : ''}`
+              )
+                option -- Select --
+                option 2024/2025 Session 1
+                option 2024/2025 Session 2
+                option 2025/2026 Session 1
+              if errors && errors.intake
+                .error-message= errors.intake
+
+            .form-group
+              label(for="sponsorship" class="label")
+                span.required *
+                span Sponsorship
+              select(
+                id="sponsorship"
+                name="sponsorship"
+                class=`form-input ${errors && errors.sponsorship ? 'error-input' : ''}`
+              )
+                option -- Select --
+                option Self-Sponsored
+                option Government Sponsored
+                option Scholarship
+              if errors && errors.sponsorship
+                .error-message= errors.sponsorship
+
+          .form-row.full-width
+            .form-group
+              label(for="gender" class="label")
+                span.required *
+                span Gender
+              .radio-group
+                label.radio-label
+                  input(
+                    type="radio"
+                    name="gender"
+                    value="Male"
+                    checked=data.gender === 'Male' ? true : false
+                  )
+                  .radio-custom
+                  span Male
+
+                label.radio-label
+                  input(
+                    type="radio"
+                    name="gender"
+                    value="Female"
+                    checked=data.gender === 'Female' ? true : false
+                  )
+                  .radio-custom
+                  span Female
+              if errors && errors.gender
+                .error-message= errors.gender
+
+          .form-row
+            .form-group
+              label(for="dateOfBirth" class="label")
+                span.required *
+                span Date of Birth
+              input(
+                type="text"
+                id="dateOfBirth"
+                name="dateOfBirth"
+                class=`form-input ${errors && errors.dateOfBirth ? 'error-input' : ''}`
+                value=data.dateOfBirth || ''
+                placeholder="YYYY/MM/DD"
+              )
+              if errors && errors.dateOfBirth
+                .error-message= errors.dateOfBirth
+
+            .form-group
+              label(for="residence" class="label")
+                span.required *
+                span Residence
+              input(
+                type="text"
+                id="residence"
+                name="residence"
+                class=`form-input ${errors && errors.residence ? 'error-input' : ''}`
+                value=data.residence || ''
+                placeholder="Enter residence"
+              )
+              if errors && errors.residence
+                .error-message= errors.residence
+
+          button(type="submit" class="submit-btn") SUBMIT
